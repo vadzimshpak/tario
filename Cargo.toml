@@ -1,0 +1,33 @@
+[package]
+name = "tario"
+version = "0.1.0"
+edition = "2024"
+description = "Upload files and directories everywhere"
+license = "MIT"
+repository = "https://github.com/vadzimshpak/tario"
+
+[package.metadata.deb]
+maintainer = "Vadim Shpak <lansibro@gmail.com>"
+copyright = "2026, Vadim Shpak"
+extended-description = "A CLI utility for uploading files and directories."
+section = "utility"
+priority = "optional"
+assets = [
+    ["target/release/tario", "usr/bin/", "755"],
+]
+
+[[bin]]
+name = "tario"
+
+[dependencies]
+clap = { version = "4.6.4", features = ["derive"] }
+tar = "0.4.46"
+flate2 = "1"
+reqwest = { version = "0.12", features = ["stream", "rustls-tls", "json"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "io-util"] }
+tokio-util = { version = "0.7", features = ["io", "io-util"] }
+axum = "0.8"
+futures-util = "0.3"
+serde = { version = "1", features = ["derive"] }
+sha2 = "0.11.0"
+hex = "0.4.3"
